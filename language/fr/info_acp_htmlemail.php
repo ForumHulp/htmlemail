@@ -44,7 +44,7 @@ $lang = array_merge($lang, array(
 
 	'LOG_CORE_NOT_REPLACED'		=> '<strong>L’extension « HTML email »  n’a pas été désinstallée avec succès</strong><br />Impossible de remplacer les fichiers<br />» %s',
 	'LOG_CORE_NOT_UPDATED'		=> '<strong>L’extension « HTML email »  n’a pas été installée avec succès</strong><br />Impossible de mettre à jour les fichiers<br />» %s',
-	'HTML_EMAIL_NOTICE'			=> '',
+	'HTML_EMAIL_NOTICE'			=> '<div style="width:80%;margin:20px auto;"><p style="text-align:left;">Aucune paramètre n’est disponible pour cette extension.<br />Cependant, toutes les mises à jour n’ont pas été correctement exécutées en raison des permissions sur les fichiers ou en raison de fichiers manquants. Pour davantage d’informations merci de consulter le « Journal d’administration ».<br /><br />Merci de mettre à jour les fichiers manuellement pour accéder à toutes les fonctionnalités !</p></div>',
 
 ));
 
