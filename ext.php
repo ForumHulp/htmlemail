@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* HTML email.
+* HTML email extension for the phpBB Forum Software package.
 *
 * @copyright (c) 2015 ForumHulp.com <http://forumhulp.com>
 * @license GNU General Public License, version 2 (GPL-2.0)

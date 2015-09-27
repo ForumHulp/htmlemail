@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* HTML email.
+* HTML email extension for the phpBB Forum Software package.
 *
 * @copyright (c) 2015 ForumHulp.com <http://forumhulp.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
@@ -93,9 +93,7 @@ class m1_initial_file extends \phpbb\db\migration\migration
 		{
 			$not_updated = array_diff($files, $files_changed);
 			$phpbb_log->add('admin', $user->data['user_id'], $user->ip, (($this->revert) ? 'LOG_CORE_NOT_REPLACED' : 'LOG_CORE_NOT_UPDATED'), time(), array(implode('<br />', $not_updated)));
-			
-			$user->lang['EXTENSION_' . (($this->revert) ? 'DELETE_DATA' : 'ENABLE') . '_SUCCESS'] .= '<div style="width:80%;margin:20px auto;"><p style="text-align:left;">' .
-			(($this->revert) ? 'Not all files are replaced ! Please replace by hand the file(s) mentioned in the Admin log' : 'Config setting of this extension are not necessary.<br />However not all updates are done properly because of file permissions or missing files. See admin log for a overview.<br /><br />Please update files by hand to enjoy all functions !'). '</p></div>';;
+			$user->lang['EXTENSION_' . (($this->revert) ? 'DELETE_DATA' : 'ENABLE') . '_SUCCESS'] .= ($this->revert) ? $user->lang['DELETE_DATA_NOTICE'] : $user->lang['ENABLE_DATA_NOTICE'];
 		}
 	}
 	
