@@ -8,7 +8,7 @@
 *
 */
 
-namespace forumhulp\htmlemail\migrations\v31x;
+namespace forumhulp\htmlemail\migrations\v32x;
 
 use phpbb\db\migration\container_aware_migration;
 
@@ -26,7 +26,7 @@ class m1_initial_file extends container_aware_migration
 	 */
 	static public function depends_on()
 	{
-		return array('\phpbb\db\migration\data\v310\gold');
+		return array('\forumhulp\htmlemail\migrations\v31x\m1_initial_file');
 	}
 
 	/**
@@ -82,37 +82,20 @@ class m1_initial_file extends container_aware_migration
 	{
 		$replacements = array(
 			'files' => array(
-				0 => '/includes/functions_messenger.' . $this->php_ext,
+				0 => '/phpbb/notification/method/messenger_base.' . $this->php_ext,
 				),
 			'searches' => array(
 				0 => array(
-					0 => '	var $use_queue = true;',
-					1 => '		$this->subject = \'\';',
-					2 => '		$this->mail_priority = $priority;',
-					3 => '$headers[] = \'Content-Type: text/plain; charset=UTF-8\';',
-					4 => '\'EMAIL_SIG\'	=> str_replace(\'<br />\', "\n", "-- \n" . htmlspecialchars_decode($config[\'board_email_sig\'])),',
-					5 => '\'SITENAME\'	=> htmlspecialchars_decode($config[\'sitename\']),',
-					),
+					0 => '$messenger = new \messenger();'
+					)
 				),
 			'replaces' => array(
 				0 => array(
-					0 => '	var $use_queue = true;
-	var $use_html = false;',
-					1 => '		$this->subject = \'\';
-		$this->use_html = false;',
-					2 => '		$this->mail_priority = $priority;
-	}
-	
-	/**
-	* Set the email html
-	*/
-	function set_mail_html($html = false)
-	{
-		$this->use_html = $html;',
-					3 => '$headers[] = \'Content-Type: \' . (($this->use_html) ? \'text/html;\' : \'text/plain;\')  . \' charset=UTF-8\';',
-					4 => '\'EMAIL_SIG\'	=> "-- \n" . $config[\'board_email_sig\'],',
-					5 => '\'SITENAME\'	=> $config[\'sitename\'],',
-					),
+					0 => '$messenger = new \messenger();
+
+		$use_html = is_callable(array($messenger, set_mail_html));
+		($use_html) ? $messenger->set_mail_html($this->config[\'html_email_on_birthday\']) : null;'
+					)
 				)
 			);
 		return $replacements;
