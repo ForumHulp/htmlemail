@@ -93,7 +93,7 @@ class m1_initial_file extends container_aware_migration
 				0 => array(
 					0 => '$messenger = new \messenger();
 
-		$use_html = is_callable(array($messenger, set_mail_html));
+		$use_html = method_exists($messenger, \'set_mail_html\');
 		($use_html) ? $messenger->set_mail_html($this->config[\'html_email_on_birthday\']) : null;'
 					)
 				)
