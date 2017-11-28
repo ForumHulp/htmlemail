@@ -6,6 +6,7 @@ HTML Email changes your phpBB forum so it can send html emails to your members.
 ## Requirements
 * phpBB 3.1.0-dev or higher
 * PHP 5.3.3 or higher
+* The Forumhulp helper plugin (https://github.com/ForumHulp/helper)
 
 ## Installation
 You can install this extension on the latest copy of the develop branch ([phpBB 3.1-dev](https://github.com/phpbb/phpbb3)) by doing the following:
